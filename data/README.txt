@@ -1,0 +1,2 @@
+These are data files that don't have the right format to be included in NCBI GEO, but are part of the paper, so I'm including them here.
+Code to reproduce the paper is hardcoded to expect them to be in this directory.
