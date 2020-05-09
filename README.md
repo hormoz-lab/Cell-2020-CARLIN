@@ -105,14 +105,14 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 13. Process all the bulk amplicon data from the various experiments:
 
     ```MATLAB
-	>> run_paper_experiments('ChronicInduction',    PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 1
-	>> run_paper_experiments('PulsedInduction',     PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 2
-	>> run_paper_experiments('Sanger',              PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 2
-	>> run_paper_experiments('InVitroPhylogeny',    PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 2
-	>> run_paper_experiments('TissuePanel',         PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 3
-	>> run_paper_experiments('Diversity', 	        PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 3
-	>> run_paper_experiments('Inducible',           PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 3
-	>> run_paper_experiments('InVivoPhylogeny',     PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 4
+	>> run_paper_experiments('ChronicInduction',    PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 1
+	>> run_paper_experiments('PulsedInduction',     PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 2
+	>> run_paper_experiments('Sanger',              PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 2
+	>> run_paper_experiments('InVitroPhylogeny',    PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 2
+	>> run_paper_experiments('TissuePanel',         PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 3
+	>> run_paper_experiments('Diversity', 	        PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 3
+	>> run_paper_experiments('Inducible',           PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 3
+	>> run_paper_experiments('InVivoPhylogeny',     PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 4
     ```
 
 14. To process single-cell data, first filter transcriptome data to generate reference barcode lists:
@@ -124,9 +124,9 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 15. Then process single-cell amplicon data:
 
     ```MATLAB
-	>> run_paper_experiments('EB',	        PROCESSED_PATH, ANALYSIS_PATH);					% Related to Figure 5
-	>> run_paper_experiments('5FU',	        PROCESSED_PATH, ANALYSIS_PATH);					% Related to Figure 6
-	>> run_paper_experiments('SCReplicate', PROCESSED_PATH, ANALYSIS_PATH);					% Related to Figure 6
+	>> run_paper_experiments('EB',	        PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 5
+	>> run_paper_experiments('5FU',	        PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 6
+	>> run_paper_experiments('SCReplicate', PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 6
     ```
 
 ## Custom Analysis for Paper
@@ -193,19 +193,19 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 24. Prepare main and supplementary figures:
 
     ```MATLAB
-	>> make_schematic_subplots(RESULTS_PATH);							% Figure 1B
+	>> make_schematic_subplots(RESULTS_PATH);				% Figure 1B
 	>> make_chronic_induction_subplots(ANALYSIS_PATH, RESULTS_PATH);	% Figures 1C-H, S1C-F
 	>> make_pulsed_induction_subplots(ANALYSIS_PATH, RESULTS_PATH);		% Figures 2A, S1G
-	>> make_invitro_phylogeny_subplots(RESULTS_PATH);					% Figures 2CD, S4C
-	>> make_tissue_panel_subplots(ANALYSIS_PATH, RESULTS_PATH); 		% Figures 3B, S3AB
-	>> make_diversity_subplots(RESULTS_PATH);							% Figures 3C-I, S3C-E
-	>> make_inducible_subplots(ANALYSIS_PATH, RESULTS_PATH);			% Figure S3F
-	>> make_invivo_phylogeny_subplots(RESULTS_PATH);					% Figures 4, S4D
-	>> make_EB_subplots(RESULTS_PATH);									% Figures 5, S5
-	>> make_5FU_subplots(RESULTS_PATH);									% Figures 6, S6
-	>> make_algorithm_subplots(RESULTS_PATH);							% Figure S2A-C
-	>> make_alignment_subplots(ANALYSIS_PATH, RESULTS_PATH);			% Figure S2D
-	>> make_toy_model_subplots(RESULTS_PATH);							% Figure S4B
+	>> make_invitro_phylogeny_subplots(RESULTS_PATH);			% Figures 2CD, S4C
+	>> make_tissue_panel_subplots(ANALYSIS_PATH, RESULTS_PATH);		% Figures 3B, S3AB
+	>> make_diversity_subplots(RESULTS_PATH);				% Figures 3C-I, S3C-E
+	>> make_inducible_subplots(ANALYSIS_PATH, RESULTS_PATH);		% Figure S3F
+	>> make_invivo_phylogeny_subplots(RESULTS_PATH);			% Figures 4, S4D
+	>> make_EB_subplots(RESULTS_PATH);					% Figures 5, S5
+	>> make_5FU_subplots(RESULTS_PATH);					% Figures 6, S6
+	>> make_algorithm_subplots(RESULTS_PATH);				% Figure S2A-C
+	>> make_alignment_subplots(ANALYSIS_PATH, RESULTS_PATH);		% Figure S2D
+	>> make_toy_model_subplots(RESULTS_PATH);				% Figure S4B
     ```
 
 25. Make supplementary tables:
