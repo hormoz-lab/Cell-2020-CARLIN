@@ -10,7 +10,7 @@ function simulate_invitro_phylogeny(analysis_dir, results_dir)
     filter_params = struct('epval', 0, 'cpval', 0, 'pos', false, 'neg', false, 'ambiguous', false, 'potential', 0);
     rng(1973);
     
-    tissue_reconstruction(samples, outdir, filter_params);
+    tissue_reconstruction(samples, outdir, results_dir, filter_params);
 
     load(sprintf('%s/Lineage.mat', outdir));
 
@@ -18,7 +18,7 @@ function simulate_invitro_phylogeny(analysis_dir, results_dir)
 
     sanger = cell(N_samples,1);
     for i = 1:N_samples
-        sanger{i} = load(sprintf('Analyzed/InVitroPhylogeny/Gen1/%d/Summary.mat', i), 'summary');
+        sanger{i} = load(sprintf('%s/InVitroPhylogeny/Gen1/%d/Summary.mat', analysis_dir, i), 'summary');
         sanger{i} = sanger{i}.summary.alleles{1};
     end
 

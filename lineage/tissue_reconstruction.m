@@ -1,12 +1,12 @@
-function tissue_reconstruction(samples, outpath, filter_params, N_sim)
+function tissue_reconstruction(samples, outpath, results_path, filter_params, N_sim)
 
-    if (nargin < 4)
+    if (nargin < 5)
         N_sim = 10000;
     end
   
     % 1. Filter alleles according to filter_params and merge them across samples
     
-    [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_samples_for_tree_reconstruction(samples, filter_params);
+    [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_samples_for_tree_reconstruction(samples, filter_params, results_path);
     [N_alleles, N_samples] = size(allele_breakdown_by_sample);
     
     % 2. Compute pairwise lineage relationships between all alleles

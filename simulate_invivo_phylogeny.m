@@ -54,6 +54,6 @@ function simulate_invivo_phylogeny(analysis_dir, results_dir)
     rng(1989);
     
     outdir = sprintf('%s/Trees/InVivoPhylogeny', results_dir);
-    tissue_reconstruction(samples, outdir, filter_params);
+    tissue_reconstruction(samples, outdir, results_dir, filter_params);
     save(sprintf('%s/Lineage.mat', outdir), 'tissue_labels', '-append');
 end

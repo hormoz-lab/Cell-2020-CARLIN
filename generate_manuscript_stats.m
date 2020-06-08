@@ -6,7 +6,7 @@ function generate_manuscript_stats(processed_path, analysis_path, results_path)
     
     fprintf(fid, 'ES CELLS\n');
     
-    load('Analyzed/ChronicInduction/PosDox/Low/96h/Summary.mat', 'summary');
+    load(sprintf('%s/ChronicInduction/PosDox/Low/96h/Summary.mat', analysis_path), 'summary');
     
     mut_events = cellfun(@(x) Mutation.identify_Cas9_events(x), summary.alleles, 'un', false);
     mut_events = vertcat(mut_events{:});
@@ -114,7 +114,8 @@ function generate_manuscript_stats(processed_path, analysis_path, results_path)
     
     fprintf(fid, '\nIN VIVO PHYLOGENY\n');
     
-    load('Results/Trees/InVivoPhylogeny/Lineage.mat', 'allele_freq', 'N_stable_alleles', 'stable_allele_at_node', 'raw_combined');
+    load(sprintf('%s/Trees/InVivoPhylogeny/Lineage.mat', results_path), ...
+        'allele_freq', 'N_stable_alleles', 'stable_allele_at_node', 'raw_combined');
     consensus = sum(allele_freq(stable_allele_at_node(2:N_stable_alleles)));
     total = sum(raw_combined.summary.allele_freqs(2:end));
     fprintf(fid, '\nConsensus tree accounts for: %d of %d edited transcripts (%8.6g%%)\n', ...

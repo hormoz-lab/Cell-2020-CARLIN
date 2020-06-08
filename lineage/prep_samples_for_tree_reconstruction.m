@@ -1,4 +1,4 @@
-function [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_samples_for_tree_reconstruction(samples, filter_params)
+function [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_samples_for_tree_reconstruction(samples, filter_params, results_path)
 
     % Prune alleles according to the parameters outlined in filter_params
 
@@ -20,11 +20,11 @@ function [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_s
     aggregated_alleles = [aggregated_alleles(template_ind); aggregated_alleles(1:template_ind-1); aggregated_alleles(template_ind+1:end)];
     
     if (filter_params.pos)
-        bank1 = load('Results/Banks/Protocol1/RNA/PosDox/Bank.mat');
+        bank1 = load(sprintf('%s/Banks/Protocol1/RNA/PosDox/Bank.mat', results_path));
         bank1 = bank1.bank;
         is1 = ismember(cellfun(@(x) degap(x.get_seq), aggregated_alleles, 'un', false), ...
                           cellfun(@(x) degap(x.get_seq), bank1.summary.alleles, 'un', false));                      
-        bank2 = load('Results/Banks/Protocol2/RNA/PosDox/Bank.mat');
+        bank2 = load(sprintf('%s/Banks/Protocol2/RNA/PosDox/Bank.mat', results_path));
         bank2 = bank2.bank;        
         is2 = ismember(cellfun(@(x) degap(x.get_seq), aggregated_alleles, 'un', false), ...
                        cellfun(@(x) degap(x.get_seq), bank2.summary.alleles, 'un', false));        
@@ -34,7 +34,7 @@ function [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_s
     end
     
     if (filter_params.cpval > 0)
-        load('Results/Banks/Protocol2/RNA/PosDox/Bank.mat');
+        load(sprintf('%s/Banks/Protocol2/RNA/PosDox/Bank.mat', results_path));
         p = bank.compute_clonal_pvalue(aggregated_alleles(2:end), sum(sum(allele_breakdown_by_sample(2:end,:),2)));
         ind = [1; find(p <= filter_params.cpval)+1];
         allele_breakdown_by_sample = allele_breakdown_by_sample(ind,:);
@@ -42,10 +42,10 @@ function [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_s
     end
     
     if (filter_params.epval > 0)
-        bank1 = load('Results/Banks/Protocol1/RNA/PosDox/Bank.mat');
+        bank1 = load(sprintf('%s/Banks/Protocol1/RNA/PosDox/Bank.mat', results_path));
         bank1 = bank1.bank;
         p1 = bank1.compute_frequency_pvalue(aggregated_alleles(2:end), sum(allele_breakdown_by_sample(2:end,:),2));
-        bank2 = load('Results/Banks/Protocol2/RNA/PosDox/Bank.mat');
+        bank2 = load(sprintf('%s/Banks/Protocol2/RNA/PosDox/Bank.mat', results_path));
         bank2 = bank2.bank;
         p2 = bank2.compute_frequency_pvalue(aggregated_alleles(2:end), sum(allele_breakdown_by_sample(2:end,:),2));
         p = max(p1, p2);
@@ -56,11 +56,11 @@ function [raw_combined, allele_breakdown_by_sample, aggregated_alleles] = prep_s
     end
     
     if (filter_params.neg)
-        bank1 = load('Results/Banks/Protocol1/RNA/NegDox/Bank.mat');
+        bank1 = load(sprintf('%s/Banks/Protocol1/RNA/NegDox/Bank.mat', results_path));
         bank1 = bank1.bank;
         is1 = ismember(cellfun(@(x) degap(x.get_seq), aggregated_alleles, 'un', false), ...
                           cellfun(@(x) degap(x.get_seq), bank1.summary.alleles, 'un', false));                      
-        bank2 = load('Results/Banks/Protocol2/RNA/NegDox/Bank.mat');
+        bank2 = load(sprintf('%s/Banks/Protocol2/RNA/NegDox/Bank.mat', results_path));
         bank2 = bank2.bank;        
         is2 = ismember(cellfun(@(x) degap(x.get_seq), aggregated_alleles, 'un', false), ...
                        cellfun(@(x) degap(x.get_seq), bank2.summary.alleles, 'un', false));        
