@@ -2,12 +2,11 @@
 
 This repository provides instructions and code to reproduce all results, numerics and figures from the [CARLIN paper](https://doi.org/10.1016/j.cell.2020.04.048):
 
-> S. Bowling, D. Sritharan, F. G. Osorio, M. Nguyen, P. Cheung, 
-A. Rodiguez-Fraticelli, S. Patel, W-C. Yuan, Y. Fujiwara, B. E. Li, S. H. Orkin, 
-S. Hormoz, F. D. Camargo. "An engineered CRISPR/Cas9 mouse line for 
-simultaneous readout of lineage histories and gene expression profiles 
-in single cells." Cell (2020), https://doi.org/10.1016/j.cell.2020.04.048 
->
+> S. Bowling*, D. Sritharan*, F. G. Osorio, M. Nguyen, P. Cheung, 
+A. Rodriguez-Fraticelli, S. Patel, W-C. Yuan, Y. Fujiwara, B. E. Li, S. H. Orkin, 
+S. Hormoz, F. D. Camargo. "An Engineered CRISPR/Cas9 Mouse Line for 
+Simultaneous Readout of Lineage Histories and Gene Expression Profiles 
+in Single Cells." Cell (2020), https://doi.org/10.1016/j.cell.2020.04.048 
 
 The instructions will walk you through how to (i) download relevant software and data, (ii) constitute processed files from raw data, (iii) invoke the CARLIN pipeline and other software to produce results, and finally (iv) regenerate figures and reproduce numerics from the paper.
 
@@ -24,7 +23,7 @@ These directories mirror my own workflow when working on this paper, and make it
 
 ## Download Software
 
-1. If you haven't done so, first [download and install the CARLIN pipeline](https://gitlab.com/hormozlab/carlin) according to the instructions, making sure to update the MATLAB path as instructed. The results in the manuscript match commit `f20a032f41d57a7a96950c86d71eea0250540894` so be sure to use that version (via `git checkout`), if you want to match to reproduce numerics exactly.
+1. If you haven't done so, first [download and install the CARLIN pipeline](https://gitlab.com/hormozlab/carlin) according to the instructions, making sure to update the MATLAB path as instructed. To reproduce figures and numerics exactly, make sure to checkout the version of code used in preparing the paper (via `git checkout v1.0`).
 
 2. Download the code from this repository into the directory given by PAPER_PATH:
 
