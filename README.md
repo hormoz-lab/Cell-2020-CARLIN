@@ -8,7 +8,9 @@ S. Hormoz, F. D. Camargo. "An Engineered CRISPR/Cas9 Mouse Line for
 Simultaneous Readout of Lineage Histories and Gene Expression Profiles 
 in Single Cells." Cell (2020), https://doi.org/10.1016/j.cell.2020.04.048 
 
-The instructions will walk you through how to (i) download relevant software and data, (ii) constitute processed files from raw data, (iii) invoke the CARLIN pipeline and other software to produce results, and finally (iv) regenerate figures and reproduce numerics from the paper.
+All intermediate and output files produced by running this code as described below are [archived on Zenodo](https://zenodo.org/record/4817818).
+
+These instructions will walk you through how to (i) download relevant software and data, (ii) constitute processed files from raw data, (iii) invoke the CARLIN pipeline and other software to produce results, and finally (iv) regenerate figures and reproduce numerics from the paper.
 
 For convenience, there are six main paths referred to below that appear in multiple steps:
 
