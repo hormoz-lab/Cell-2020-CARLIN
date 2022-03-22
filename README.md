@@ -25,7 +25,7 @@ These directories mirror my own workflow when working on this paper, and make it
 
 ## Download Software
 
-1. If you haven't done so, first [download and install the CARLIN pipeline](https://gitlab.com/hormozlab/carlin) according to the instructions, making sure to update the MATLAB path as instructed. To reproduce figures and numerics exactly, make sure to checkout the version of code used in preparing the paper (via `git checkout v1.0`).
+1. If you haven't done so, first [download and install the CARLIN pipeline](https://gitlab.com/hormozlab/carlin) according to the instructions, making sure to update the MATLAB path and register CatchAll binary as instructed. To reproduce figures and numerics exactly, make sure to checkout the version of code used in preparing the paper (via `git checkout v1.0`).
 
 2. Download the code from this repository into the directory given by PAPER_PATH:
 
@@ -37,11 +37,7 @@ These directories mirror my own workflow when working on this paper, and make it
 
 4. [Download PEAR V0.9.11](https://www.h-its.org/downloads/pear-academic) (the paired-end read merger we used in the paper) into PEAR_PATH. 
 
-5. [Download CatchAll 4.0](http://www.northeastern.edu/catchall/downloads.html) for fitting allele abundance and making the bank, and copy the full path to where you downloaded CatchAll (including binary name) into:
-
-		CODE_PATH/@Bank/CatchAllPath.txt
-
-6. [Download Seurat V3.1.2](https://satijalab.org/seurat/install.html) for integrating single-cell transcriptomic datasets and performing differential gene expression.
+5. [Download Seurat V3.1.2](https://satijalab.org/seurat/install.html) for integrating single-cell transcriptomic datasets and performing differential gene expression.
 
 ## Download Data
 
