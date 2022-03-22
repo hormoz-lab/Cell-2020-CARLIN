@@ -43,7 +43,7 @@ These directories mirror my own workflow when working on this paper, and make it
 
 The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE146972)/[Bioproject PRJNA612835](https://www.ncbi.nlm.nih.gov//bioproject/PRJNA612835)/[SRA SRP252955](https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP252955). 
 
-7. Download all single-cell count matrix files into PROCESSED_PATH. These files were generated using CellRanger (`cellranger mkfastq` and `cellranger count`).
+6. Download all single-cell count matrix files into PROCESSED_PATH. These files were generated using CellRanger (`cellranger mkfastq` and `cellranger count`).
 
 	```bash
 	$ mkdir -p ${PROCESSED_PATH}
@@ -53,7 +53,7 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 	$ rm GSE146972_RAW.tar
 	```
 
-8. Retrieve the amplicon sequencing data corresponding to the single-cell runs, using the SRA-tools fastq-dump utility. These files were generated using CellRanger (`cellranger mkfastq`),
+7. Retrieve the amplicon sequencing data corresponding to the single-cell runs, using the SRA-tools fastq-dump utility. These files were generated using CellRanger (`cellranger mkfastq`),
 
 	```bash
 	$ cd ${PROCESSED_PATH}
@@ -61,7 +61,7 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 	$ ./${SRA_PATH}/bin/fastq-dump $(<SampleList.txt) -O . --split-files --gzip	
 	```
 
-9. Archiving the data in NCBI flattens the descriptively named sub-directory structure and renames some files. The ugly commands below are just to recreate the expected hierarchy and recover the original file names, which the downstream code expects.
+8. Archiving the data in NCBI flattens the descriptively named sub-directory structure and renames some files. The ugly commands below are just to recreate the expected hierarchy and recover the original file names, which the downstream code expects.
 
 	```bash
 	$ cd ${PROCESSED_PATH}
@@ -73,7 +73,7 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 	$ rm SampleList.txt
 	```
 
-10. Retrieve the unpaired single-end bulk amplicon sequencing data into RAW_PATH using the SRA-tools fastq-dump utility:
+9. Retrieve the unpaired single-end bulk amplicon sequencing data into RAW_PATH using the SRA-tools fastq-dump utility:
 
     ```bash
 	$ mkdir -p ${RAW_PATH}
@@ -85,7 +85,7 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 
 ## Preprocess Data	
 
-11. Merge the single-end reads from the bulk amplicon sequencing runs into paired-end reads using PEAR:
+10. Merge the single-end reads from the bulk amplicon sequencing runs into paired-end reads using PEAR:
 
     ```bash
 	$ ${PAPER_PATH}/process_paired_end_reads.sh ${PEAR_PATH}/bin/pear ${PAPER_PATH}/sample_sheet.csv ${RAW_PATH} ${PROCESSED_PATH} -SRA
@@ -93,13 +93,13 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 
 ## Run CARLIN Pipeline	
 
-12. Temporarily add PAPER_PATH to MATLAB's search path.
+11. Temporarily add PAPER_PATH to MATLAB's search path.
 
 	```MATLAB
 	>> addpath(genpath(PAPER_PATH));
 	```
 
-13. Process all the bulk amplicon data from the various experiments:
+12. Process all the bulk amplicon data from the various experiments:
 
     ```MATLAB
 	>> run_paper_experiments('ChronicInduction',    PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 1
@@ -112,13 +112,13 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 	>> run_paper_experiments('InVivoPhylogeny',     PROCESSED_PATH, ANALYSIS_PATH);		% Related to Figure 4
     ```
 
-14. To process single-cell data, first filter transcriptome data to generate reference barcode lists:
+13. To process single-cell data, first filter transcriptome data to generate reference barcode lists:
 
     ```MATLAB
 	>> run_paper_experiments('Transcriptome', PROCESSED_PATH, ANALYSIS_PATH);
     ```
 
-15. Then process single-cell amplicon data:
+14. Then process single-cell amplicon data:
 
     ```MATLAB
 	>> run_paper_experiments('EB',	        PROCESSED_PATH, ANALYSIS_PATH);			% Related to Figure 5
@@ -128,33 +128,33 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 
 ## Custom Analysis for Paper
 
-16. There are some single-cell samples that need to be pooled together (e.g. mouse bones, replicates)
+15. There are some single-cell samples that need to be pooled together (e.g. mouse bones, replicates)
 
     ```MATLAB
 	>> pool_samples(ANALYSIS_PATH);
     ```
 
-17. Create the CARLIN allele bank (and banks for negative controls):
+16. Create the CARLIN allele bank (and banks for negative controls):
 
     ```MATLAB
 	>> create_allele_banks(ANALYSIS_PATH, RESULTS_PATH);
     ```
 
-18. Run some simulations pertaining to CARLIN allele diversity:
+17. Run some simulations pertaining to CARLIN allele diversity:
 
     ```MATLAB
 	>> simulate_multimapped_alleles(RESULTS_PATH);
 	>> simulate_diversity_replicates(ANALYSIS_PATH, RESULTS_PATH);
     ```
 
-19. Run simulations for in vitro and in vivo lineage reconstruction:
+18. Run simulations for in vitro and in vivo lineage reconstruction:
 
     ```MATLAB
 	>> simulate_invitro_phylogeny(ANALYSIS_PATH, RESULTS_PATH);
 	>> simulate_invivo_phylogeny(ANALYSIS_PATH, RESULTS_PATH);
     ```
 
-20. Align the datasets from single-cell experiments, generate clusters and look at marker genes using Seurat:
+19. Align the datasets from single-cell experiments, generate clusters and look at marker genes using Seurat:
 	
     ```R
 	> setwd(PAPER_PATH)
@@ -164,14 +164,14 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 	> Analysis_5FU(PROCESSED_PATH, ANALYSIS_PATH, RESULTS_PATH)
     ```
 
-21. Overlay CARLIN alleles on to transcriptome for single-cell experiments:
+20. Overlay CARLIN alleles on to transcriptome for single-cell experiments:
 	
     ```MATLAB
 	>> analyze_EB_experiment(ANALYSIS_PATH, RESULTS_PATH);
 	>> analyze_5FU_experiment(ANALYSIS_PATH, RESULTS_PATH);
 	```
 
-22. Do differential gene expression for 5-FU experiment using Seurat:
+21. Do differential gene expression for 5-FU experiment using Seurat:
 
 	```R
 	> setwd(PAPER_PATH)
@@ -179,7 +179,7 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 	> DGE_5FU(ANALYSIS_PATH, RESULTS_PATH)
 	```
 
-23. Compute statistics for single-cell experiments:
+22. Compute statistics for single-cell experiments:
 
 	```MATLAB
 	>> generate_SC_stats(RESULTS_PATH);
@@ -187,7 +187,7 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 
 ## Generate Outputs
 
-24. Prepare main and supplementary figures:
+23. Prepare main and supplementary figures:
 
     ```MATLAB
 	>> make_schematic_subplots(RESULTS_PATH);				% Figure 1B
@@ -205,13 +205,13 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 	>> make_toy_model_subplots(RESULTS_PATH);				% Figure S4B
     ```
 
-25. Make supplementary tables:
+24. Make supplementary tables:
 
     ```MATLAB
 	>> generate_supplemental_tables(ANALYSIS_PATH, RESULTS_PATH);
     ```
 
-26. Generate all the statistics and numerical quantities found in the manuscript text:
+25. Generate all the statistics and numerical quantities found in the manuscript text:
 
     ```MATLAB
 	>> generate_manuscript_stats(PROCESSED_PATH, ANALYSIS_PATH, RESULTS_PATH);
