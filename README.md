@@ -30,7 +30,7 @@ These directories mirror my own workflow when working on this paper, and make it
 2. Download the code from this repository into the directory given by PAPER_PATH:
 
 	```bash
-	$ git clone https://github.com/hormoz-lab/cell-2020-carlin.git ${PAPER_PATH}
+	$ git clone https://github.com/hormoz-lab/Cell-2020-CARLIN.git ${PAPER_PATH}
 	```
 
 3. [Download SRA-Tools](https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit) (to extract sequencing data from NCBI SRA) into SRA_PATH. Follow the [installation](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit) and [configuration](https://github.com/ncbi/sra-tools/wiki/03.-Quick-Toolkit-Configuration) steps.
@@ -219,9 +219,9 @@ The data for this study corresponds to NCBI [GEO GSE146792](https://www.ncbi.nlm
 
 ## Miscellany
 
-- Data that doesn't have the right format to be included in NCBI databases but is needed to reproduce some results (Sanger sequencing data used in Figure 2CD and fragment analyzer data used in Figure S2D) can be found [here](https://github.com/hormoz-lab/cell-2020-carlin/-/tree/master/data).
-- The figures' schematic panels and graphical abstract can be found [here](https://github.com/hormoz-lab/cell-2020-carlin/-/tree/master/figures/schematics). 
-- The source files for the fragment analyzer traces shown in Figure S1A can be found [here](https://github.com/hormoz-lab/cell-2020-carlin/-/tree/master/figures/fa_trace).
-- The source files for the FACS plots shown in Figure S5AB can be found [here](https://github.com/hormoz-lab/cell-2020-carlin/-/tree/master/figures/facs).
+- Data that doesn't have the right format to be included in NCBI databases but is needed to reproduce some results (Sanger sequencing data used in Figure 2CD and fragment analyzer data used in Figure S2D) can be found [here](https://github.com/hormoz-lab/Cell-2020-CARLIN/-/tree/master/data).
+- The figures' schematic panels and graphical abstract can be found [here](https://github.com/hormoz-lab/Cell-2020-CARLIN/-/tree/master/figures/schematics). 
+- The source files for the fragment analyzer traces shown in Figure S1A can be found [here](https://github.com/hormoz-lab/Cell-2020-CARLIN/-/tree/master/figures/fa_trace).
+- The source files for the FACS plots shown in Figure S5AB can be found [here](https://github.com/hormoz-lab/Cell-2020-CARLIN/-/tree/master/figures/facs).
 
 #### Prepared By: Duluxan Sritharan
